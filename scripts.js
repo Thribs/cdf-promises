@@ -1,26 +1,14 @@
-const bestDeveloper = "Vanessa"
+let p = new Promise((resolve, reject) => { 
+    let a = 1 + 1
+    if (a == 2) {
+        resolve("Success!")
+    } else {
+        reject("Failure!")
+    }
+})
 
-function whosBestCallback(callback, errorCallback) {
-
-    return new Promise(function(resolve, reject) {
-
-        if (bestDeveloper != "Vanessa" && bestDeveloper != "Gabriel") {
-            reject({
-                name: "This is wrong.",
-                message: bestDeveloper + "? Really?"
-            })
-        } else {
-            resolve({
-                name: bestDeveloper,
-                message: "CDFs are the best!"
-            })
-        }
-
-    })
-}
-
-whosBestCallback().then( result => {
-    console.log(result.name + "? Yeah! " + result.message)
+p.then( message => {
+    console.log("This is in the then: " + message);
 }).catch( err => {
-    console.log(err.name + " " + err.message)
+    console.log("This is the catch: " + err);
 })
