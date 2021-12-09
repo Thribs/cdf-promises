@@ -1,14 +1,19 @@
-let p = new Promise((resolve, reject) => { 
-    let a = 1 + 1
-    if (a == 2) {
-        resolve("Success!")
-    } else {
-        reject("Failure!")
-    }
-})
+function sumNumbers() {
+  let result = 1 + 1;
 
-p.then( message => {
-    console.log("This is in the then: " + message);
-}).catch( err => {
-    console.log("This is the catch: " + err);
-})
+  if (result == 2) {
+    successCallback();
+  } else {
+    errorCallback();
+  }
+}
+
+function successCallback() {
+  console.log("Yeah! Number2!");
+}
+
+function errorCallback() {
+  console.log("Oops! Something went wrong.");
+}
+
+sumNumbers();
