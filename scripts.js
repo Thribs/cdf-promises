@@ -1,19 +1,18 @@
-function sumNumbers() {
-  let result = 1 + 1;
+const ul = document.getElementById("users")
+const url = "https://jsonplaceholder.typicode.com/users"
 
-  if (result == 2) {
-    successCallback();
-  } else {
-    errorCallback();
-  }
-}
+fetch(url)
+.then( response => response.json())
+.then( data => {
+    const users = data
+    console.log(users)
 
-function successCallback() {
-  console.log("Yeah! Number2!");
-}
-
-function errorCallback() {
-  console.log("Oops! Something went wrong.");
-}
-
-sumNumbers();
+    return users.map( user => {
+        let li = document.createElement('li')
+        li.innerHTML = `${user.name} (${user.username})`
+        ul.appendChild(li)
+    })
+})
+.catch( err => {
+    console.log("Oops!", err);
+})
